@@ -81,4 +81,18 @@ public class ApplicationTests {
 				.andExpect(content().string(containsString("This content is only shown to administrators.")));
 	}
 
+	@Test
+	@WithMockUser(roles = "USER")
+	public void loginWithRoleUserThenExpectUserSpecificContent2() throws Exception {
+		mockMvc.perform(get("/admin"))
+				.andExpect(status().isForbidden());
+	}
+
+	@Test
+	@WithMockUser(roles = "ADMIN")
+	public void loginWithRoleAdminThenExpectAdminSpecificContent2() throws Exception {
+		mockMvc.perform(get("/admin"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("Custom administrator page.")));
+	}
 }
