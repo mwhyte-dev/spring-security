@@ -10,12 +10,12 @@ import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequ
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,7 +28,7 @@ public class ApplicationTests {
 	public void loginWithValidUserThenAuthenticated() throws Exception {
 		FormLoginRequestBuilder login = formLogin()
 				.user("user")
-				.password("password");
+				.password("pass");
 
 		mockMvc.perform(login)
 				.andExpect(authenticated().withUsername("user"));
@@ -46,7 +46,7 @@ public class ApplicationTests {
 
 	@Test
 	public void accessUnsecuredResourceThenOk() throws Exception {
-		mockMvc.perform(get("/"))
+		mockMvc.perform(get("/css/style.css"))
 				.andExpect(status().isOk());
 	}
 
@@ -60,7 +60,16 @@ public class ApplicationTests {
 	@Test
 	@WithMockUser
 	public void accessSecuredResourceAuthenticatedThenOk() throws Exception {
-		mockMvc.perform(get("/hello"))
+		mockMvc.perform(get("/index"))
 				.andExpect(status().isOk());
+	}
+
+
+	@Test
+	@WithMockUser(roles = "USER")
+	public void loginWithRoleUserThenExpectUserSpecificContent() throws Exception {
+		mockMvc.perform(get("/index"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("This content is only shown to users.")));
 	}
 }
