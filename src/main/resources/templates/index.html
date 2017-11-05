@@ -20,9 +20,13 @@
             This content is only shown to users.
         </div>
 
-
-
         <br/>
+
+        <div>
+            User: <span sec:authentication="name">NOT FOUND</span>
+            Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span>
+        </div>
+
         <br/>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
