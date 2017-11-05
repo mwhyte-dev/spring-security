@@ -72,4 +72,13 @@ public class ApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().string(containsString("This content is only shown to users.")));
 	}
+
+	@Test
+	@WithMockUser(roles = "ADMIN")
+	public void loginWithRoleAdminThenExpectAdminSpecificContent() throws Exception {
+		mockMvc.perform(get("/index"))
+				.andExpect(status().isOk())
+				.andExpect(content().string(containsString("This content is only shown to administrators.")));
+	}
+
 }
