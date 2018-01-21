@@ -7,6 +7,6 @@ Repo contents by branch:
 
 | Lesson   |     Branch   |    
 |:--------:|:-------------|
-| N/A      | [Basic form login](https://github.com/MWhyte/spring-security-basic/tree/1.basic-form-login)| 
-| N/A      | [Thymeleaf support for user roles](https://github.com/MWhyte/spring-security-basic/tree/2.thymeleaf-extras)|
-| N/A      | [Controlling access and login redirect based on user roles](https://github.com/MWhyte/spring-security-basic/tree/3.redirect-based-on-role)|
+| [1 - Basic form login](https://www.codenerve.com/spring-security-basic-login-form/)      | [branch](https://github.com/MWhyte/spring-security-basic/tree/1.basic-form-login)| 
+| N/A      | [branch](https://github.com/MWhyte/spring-security-basic/tree/2.thymeleaf-extras)|
+| N/A      | [branch](https://github.com/MWhyte/spring-security-basic/tree/3.redirect-based-on-role)|
