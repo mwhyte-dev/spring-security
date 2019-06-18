@@ -5,6 +5,8 @@
  */
 package com.codenerve.spring.sec;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +77,8 @@ public class ApplicationTests {
 	public void loginWithRoleUserThenExpectUserSpecificContent() throws Exception {
 		mockMvc.perform(get("/index"))
 				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("This content is only shown to users.")));
+				.andExpect(content().string(containsString("This content is only shown to users.")))
+				.andExpect(content().string(doesNotContainString("This content is only shown to administrators.")));
 	}
 
 	@Test
@@ -83,7 +86,12 @@ public class ApplicationTests {
 	public void loginWithRoleAdminThenExpectAdminSpecificContent() throws Exception {
 		mockMvc.perform(get("/index"))
 				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("This content is only shown to administrators.")));
+				.andExpect(content().string(containsString("This content is only shown to administrators.")))
+				.andExpect(content().string(doesNotContainString("This content is only shown to users.")));
+	}
+
+	private Matcher<String> doesNotContainString(String s) {
+		return CoreMatchers.not(containsString(s));
 	}
 
 }
