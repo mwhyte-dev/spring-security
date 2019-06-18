@@ -35,7 +35,7 @@ public class ApplicationTests {
     public void loginWithValidUserThenAuthenticated() throws Exception {
         FormLoginRequestBuilder login = formLogin()
                 .user("user")
-                .password("password");
+                .password("pass");
 
         mockMvc.perform(login)
                 .andExpect(authenticated().withUsername("user"));
@@ -53,7 +53,7 @@ public class ApplicationTests {
 
     @Test
     public void accessUnsecuredResourceThenOk() throws Exception {
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/css/style.css"))
                 .andExpect(status().isOk());
     }
 
@@ -67,7 +67,7 @@ public class ApplicationTests {
     @Test
     @WithMockUser
     public void accessSecuredResourceAuthenticatedThenOk() throws Exception {
-        mockMvc.perform(get("/hello"))
+        mockMvc.perform(get("/index"))
                 .andExpect(status().isOk());
     }
 }
