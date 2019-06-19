@@ -3,6 +3,7 @@
  *
  * You may study, use, and modify this example. Redistribution is not permitted.
  */
+
 package com.codenerve.spring.sec.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("user").password("pass").roles("USER")
+                .withUser("user").password("{noop}pass").roles("USER")
                 .and()
-                .withUser("admin").password("pass").roles("ADMIN");
+                .withUser("admin").password("{noop}pass").roles("ADMIN");
     }
 }
