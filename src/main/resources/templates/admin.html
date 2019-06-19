@@ -10,27 +10,17 @@
 <head>
     <title>codenerve.com - Welcome!</title>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Admin</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
     <body>
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
-        <div sec:authorize="hasRole('ADMIN')">
-            This content is only shown to administrators.
-        </div>
-
-        <div sec:authorize="hasRole('USER')">
-            This content is only shown to users.
-        </div>
-
-        <br/>
-
         <div>
-            User: <span sec:authentication="name">NOT FOUND</span>
-            Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span>
+             Custom administrator page.
         </div>
+
 
         <br/>
         <form th:action="@{/logout}" method="post">
