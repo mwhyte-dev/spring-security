@@ -4,8 +4,9 @@
   ~
   ~ You may study, use, and modify this example. Redistribution is not permitted.
   -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
     <title>codenerve.com - Spring Boot - Basic Login Form</title>
@@ -35,6 +36,11 @@
         <div class="form__field">
             <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Password</span></label>
             <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
+        </div>
+
+        <div class="text--center">
+            <label id="login__checkbox_label" for="login__checkbox">remember me?</label>
+            <input id="login__checkbox" type="checkbox" name="remember-me" />
         </div>
 
         <div class="text--center" th:if="${param.error}">

@@ -3,6 +3,7 @@
  *
  * You may study, use, and modify this example. Redistribution is not permitted.
  */
+
 package com.codenerve.spring.sec;
 
 import org.springframework.boot.SpringApplication;

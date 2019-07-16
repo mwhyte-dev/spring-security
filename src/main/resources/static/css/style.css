@@ -124,6 +124,11 @@ input[type='submit'] {
   width: 100%;
 }
 
+.form label[id='login__checkbox_label'] {
+  background-color: #2c3338;
+  padding: 0 0;
+}
+
 .form__field {
   display: -webkit-box;
   display: -ms-flexbox;
