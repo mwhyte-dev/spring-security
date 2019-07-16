@@ -38,6 +38,11 @@
             <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
         </div>
 
+        <div class="text--center">
+            <label id="login__checkbox_label" for="login__checkbox">remember me?</label>
+            <input id="login__checkbox" type="checkbox" name="remember-me" />
+        </div>
+
         <div class="text--center" th:if="${param.error}">
             Invalid username and password.
         </div>

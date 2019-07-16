@@ -16,22 +16,33 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    // @formatter:off
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
+            .authorizeRequests()
                 .antMatchers( "/css/**").permitAll()
                 .anyRequest().authenticated()
-                .and()
-                .formLogin()
+
+            .and()
+            .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/index")
                 .permitAll()
-                .and()
+
+            .and()
                 .logout()
                 .permitAll()
-                .and().csrf().disable(); // we'll enable this in a later blog post
+
+            .and()
+                .rememberMe()
+//                .tokenValiditySeconds(1000)
+
+            .and()
+                .csrf().disable(); // we'll enable this in a later blog post
     }
+    // @formatter:on
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
