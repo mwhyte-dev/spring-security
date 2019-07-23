@@ -5,8 +5,6 @@
  */
 package com.codenerve.spring.sec;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,41 +69,40 @@ public class ApplicationTests {
 				.andExpect(status().isOk());
 	}
 
-
 	@Test
 	@WithMockUser(roles = "USER")
-	public void loginWithRoleUserThenExpectUserSpecificContent() throws Exception {
-		mockMvc.perform(get("/index"))
-				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("This content is only shown to users.")))
-				.andExpect(content().string(doesNotContainString("This content is only shown to administrators.")));
-	}
-
-	@Test
-	@WithMockUser(roles = "ADMIN")
-	public void loginWithRoleAdminThenExpectAdminSpecificContent() throws Exception {
-		mockMvc.perform(get("/index"))
-				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("This content is only shown to administrators.")))
-				.andExpect(content().string(doesNotContainString("This content is only shown to users.")));
-	}
-
-	@Test
-	@WithMockUser(roles = "USER")
-	public void loginWithRoleUserThenExpectUserSpecificContent2() throws Exception {
+	public void loginWithRoleUserThenExpectAdminPageForbidden() throws Exception {
 		mockMvc.perform(get("/admin"))
 				.andExpect(status().isForbidden());
 	}
 
 	@Test
 	@WithMockUser(roles = "ADMIN")
-	public void loginWithRoleAdminThenExpectAdminSpecificContent2() throws Exception {
+	public void loginWithRoleAdminThenExpectAdminContent() throws Exception {
 		mockMvc.perform(get("/admin"))
 				.andExpect(status().isOk())
 				.andExpect(content().string(containsString("Custom administrator page.")));
 	}
 
-    private Matcher<String> doesNotContainString(String s) {
-        return CoreMatchers.not(containsString(s));
-    }
+	@Test
+	public void loginWithRoleUserThenExpectIndexPageRedirect() throws Exception {
+		FormLoginRequestBuilder login = formLogin()
+				.user("user")
+				.password("pass");
+
+		mockMvc.perform(login)
+				.andExpect(authenticated().withUsername("user"))
+				.andExpect(redirectedUrl("/index"));
+	}
+
+	@Test
+	public void loginWithRoleAdminThenExpectAdminPageRedirect() throws Exception {
+		FormLoginRequestBuilder login = formLogin()
+				.user("admin")
+				.password("pass");
+
+		mockMvc.perform(login)
+				.andExpect(authenticated().withUsername("admin"))
+				.andExpect(redirectedUrl("/admin"));
+	}
 }
