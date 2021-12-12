@@ -1,5 +1,3 @@
-
-
 package dev.mwhyte.spring.sec;
 
 import org.springframework.boot.SpringApplication;
