@@ -1,10 +1,4 @@
-/*
- * Copyright (c) 2018 codenerve.com
- *
- * You may study, use, and modify this example. Redistribution is not permitted.
- */
-
-package com.codenerve.spring.sec.config;
+package dev.mwhyte.spring.sec.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

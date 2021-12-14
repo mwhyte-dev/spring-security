@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-  ~ Copyright (c) 2018 codenerve.com
-  ~
-  ~ You may study, use, and modify this example. Redistribution is not permitted.
-  -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
@@ -18,7 +14,7 @@
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
         <div sec:authorize="hasRole('ADMIN')">
-            This content is only shown to administrators.
+            This content is only shown to administrators.§§
         </div>
 
         <div sec:authorize="hasRole('USER')">
