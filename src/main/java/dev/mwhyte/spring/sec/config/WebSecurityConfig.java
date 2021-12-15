@@ -1,10 +1,4 @@
-/*
- * Copyright (c) 2018 codenerve.com
- *
- * You may study, use, and modify this example. Redistribution is not permitted.
- */
-
-package com.codenerve.spring.sec.config;
+package dev.mwhyte.spring.sec.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "/css/**").permitAll()
+                .antMatchers( "/css/**", "/images/**", "/favicon.ico").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

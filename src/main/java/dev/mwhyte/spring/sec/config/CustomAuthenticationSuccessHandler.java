@@ -1,9 +1,4 @@
-/*
- * Copyright (c) 2018 codenerve.com
- *
- * You may study, use, and modify this example. Redistribution is not permitted.
- */
-package com.codenerve.spring.sec.config;
+package dev.mwhyte.spring.sec.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
