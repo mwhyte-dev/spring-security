@@ -2,7 +2,7 @@
 
 An introduction to spring security
 
-Lessons at [https://mwhyte.dev]([https://mwhyte.dev)
+Lessons at [https://mwhyte.dev](https://mwhyte.dev)
 
 Repo contents by branch:
 
