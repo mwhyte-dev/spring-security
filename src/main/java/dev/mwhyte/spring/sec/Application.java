@@ -1,9 +1,4 @@
-/*
- * Copyright (c) 2018 codenerve.com
- *
- * You may study, use, and modify this example. Redistribution is not permitted.
- */
-package com.codenerve.spring.sec;
+package dev.mwhyte.spring.sec;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

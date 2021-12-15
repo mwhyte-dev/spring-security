@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<!--
-  ~ Copyright (c) 2018 codenerve.com
-  ~
-  ~ You may study, use, and modify this example. Redistribution is not permitted.
-  -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-    <title>codenerve.com - Spring Boot - Basic Login Form</title>
+    <title>mwhyte.dev - Spring Boot - Basic Login Form</title>
     <meta charset="UTF-8">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
@@ -21,10 +17,9 @@
 <div class="grid">
 
     <form th:action="@{/login}" method="post" class="form login">
-
         <br/>
         <div class="form__image">
-            <img src="https://codenerve.com/favicon.png" alt="codenerve.com" style='width:250px;height:250px'>
+            <img src="images/company-logo.png" alt="mwhyte.dev" style='width:250px;height:250px'>
         </div>
 
         <div class="form__field">
@@ -49,10 +44,6 @@
         </div>
 
     </form>
-
-    <p class="text--center">View the lesson <a href="https://www.codenerve.com/spring-boot-basic-login-form/" target="_blank">here</a>
-        <svg class="icon"></use></svg></p>
-
 </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="icons"><symbol id="arrow-right" viewBox="0 0 1792 1792">
